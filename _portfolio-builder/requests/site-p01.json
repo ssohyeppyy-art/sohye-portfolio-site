@@ -1,0 +1,57 @@
+{
+  "chapterId": "p01",
+  "chapterLabel": "오늘의집 '콜라보 마켓'크리에이터 사이드 Growth",
+  "fields": [
+    {
+      "key": "field_0",
+      "selectorHint": "proj__title",
+      "currentText": "오늘의집 '콜라보 마켓'\n크리에이터 사이드 GROWTH"
+    },
+    {
+      "key": "field_1",
+      "selectorHint": "proj__lede",
+      "currentText": "크리에이터 기반 판매 구조를 스케일업하기 위해 데이터 기반 세그멘테이션으로 외부 크리에이터 유입 CRM 전략을 설계·실행하고, 브랜드·상품과 크리에이터를 1:1로 매칭하는 모델을 고도화해 캠페인 전환과 GMV 개선까지 연결했습니다."
+    },
+    {
+      "key": "field_2",
+      "selectorHint": "sol__statement",
+      "currentText": "외부 크리에이터 POOL 확보 과정에서 응답률·전환율의 변동성이 커, 협업 가능성이 높은 크리에이터군을 먼저 정의하고 세그먼트별 메시지를 실험했습니다."
+    },
+    {
+      "key": "field_3",
+      "selectorHint": "sol__statement",
+      "currentText": "가입 크리에이터와 브랜드·상품 간 매칭 효율이 낮아 카테고리·가격대·콘텐츠 톤의 미스매치로 성과 편차가 컸습니다. MD팀이 보유한 브랜드별 니즈와 크리에이터 특성을 데이터로 연결했습니다."
+    },
+    {
+      "key": "field_4",
+      "selectorHint": "point-box p",
+      "currentText": "팔로워 규모·카테고리·반응 지표·도달률·프리미엄 협업 이력 등 6개 축으로 크리에이터 스코어를 매겨 우선순위를 정했습니다."
+    },
+    {
+      "key": "field_5",
+      "selectorHint": "point-box p",
+      "currentText": "단순 제안 → 상품 포함 제안 → 혜택 패키지 → 역제안 컨시어지, 4단계로 접근 강도를 높여가며 채널별(E-MAIL·인스타DM·인포크·LMS) 반응을 실험했습니다."
+    },
+    {
+      "key": "field_6",
+      "selectorHint": "figcaption",
+      "currentText": "FIG. I — 크리에이터 세그먼트 분류 · 협업 스코어링 시트"
+    },
+    {
+      "key": "field_7",
+      "selectorHint": "sol__label",
+      "currentText": "SOLUTION 1. CRM 메시징 실험"
+    },
+    {
+      "key": "field_8",
+      "selectorHint": "sol__label",
+      "currentText": "SOLUTION 2. 1:1 매칭 모델"
+    }
+  ],
+  "images": [
+    "img_0.jpg"
+  ],
+  "pdf": null,
+  "voice": null,
+  "requestedAt": "2026-07-19T02:48:26.377Z"
+}
