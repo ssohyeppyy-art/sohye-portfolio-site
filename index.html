@@ -689,4 +689,23 @@
     });
   });
 })();
+
+// scroll-spy: highlight the current chapter in the fixed left rail's nav
+(function(){
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#railNav a[data-nav]'));
+  var chapters = document.querySelectorAll('article.chapter[id]');
+  if (!navLinks.length || !chapters.length || !('IntersectionObserver' in window)) return;
+  var linkByChapterId = {};
+  navLinks.forEach(function(a){ linkByChapterId[a.dataset.nav] = a; });
+  var navIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      var link = linkByChapterId[entry.target.id];
+      if (!link) return;
+      navLinks.forEach(function(a){ a.parentElement.classList.remove('active'); });
+      link.parentElement.classList.add('active');
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+  chapters.forEach(function(el){ navIo.observe(el); });
+})();
 </script>
