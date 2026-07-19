@@ -82,9 +82,35 @@
   .cap b{ color: var(--ink-soft); font-weight: 500; }
   .cap .num{ color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
 
-  /* ---------- page shell ---------- */
-  .paper{ background: var(--bg); min-height: 100vh; }
-  .sheet{ padding: clamp(1.6rem, 4vw, 3.2rem) var(--pad) clamp(3rem, 6vw, 5rem); }
+  /* ---------- page shell: fixed left rail (3) + scrolling right column (7) ---------- */
+  .paper{ background: var(--bg); }
+  .split{ display: flex; align-items: flex-start; min-height: 100vh; }
+  .rail{
+    flex: 0 0 30%; max-width: 30%; box-sizing: border-box;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    padding: clamp(1.6rem, 3vw, 2.6rem) clamp(1.2rem, 2.4vw, 2rem);
+    border-right: 1px solid var(--hairline);
+    display: flex; flex-direction: column; justify-content: space-between; gap: 2.4rem;
+  }
+  .rail__name{
+    margin: 0.9rem 0 0; font-family: var(--font-sans); font-weight: 800;
+    font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 1; letter-spacing: -0.02em;
+  }
+  .rail__role{ margin-top: 0.6rem; }
+  .rail__bio{ margin: 1.2rem 0 0; font-size: var(--fs-cap); line-height: 1.75; color: var(--ink-soft); }
+  .rail .cover-contact{ margin-top: 1rem; }
+  .rail .proj-nav li.active a{ color: var(--accent); }
+  .rail .proj-nav li.active a::before{ color: var(--accent); }
+  .scroll{ flex: 1 1 70%; max-width: 70%; min-width: 0; }
+  .scroll__inner{ padding: clamp(1.6rem, 4vw, 3.2rem) var(--pad) clamp(3rem, 6vw, 5rem); }
+  @media (max-width: 900px){
+    .split{ flex-direction: column; min-height: 0; }
+    .rail{
+      position: static; height: auto; max-width: 100%; width: 100%; flex-basis: auto;
+      border-right: none; border-bottom: 1px solid var(--hairline);
+    }
+    .scroll{ max-width: 100%; width: 100%; }
+  }
 
   /* ---------- 12-col grid ---------- */
   .row{ display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); align-items: start; }
@@ -201,10 +227,7 @@
   .sol__result{ margin-top: 1.2rem; font-family: var(--font-mono); font-size: var(--fs-cap); color: var(--muted); }
   .sol__result .num{ color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
 
-  /* ---------- cover (resume-split hero) ---------- */
-  .cover-grid{ display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4rem); padding: clamp(1.6rem, 4vw, 2.6rem) 0 clamp(2.4rem, 5vw, 3.6rem); }
-  @media (max-width: 780px){ .cover-grid{ grid-template-columns: 1fr; gap: 2rem; } }
-  .cover-role{ margin: 0; font-size: var(--fs-statement); font-weight: 600; line-height: 1.3; color: var(--ink); }
+  /* ---------- cover-block components (now reused inside .rail + the Career/Skills intro row) ---------- */
   .cover-bio{ margin: 0; max-width: 34em; font-size: var(--fs-body); line-height: 1.75; color: var(--ink-soft); }
   .cover-bio b{ color: var(--ink); font-weight: 700; }
   .cover-contact{ margin-top: 1.2rem; }
@@ -284,56 +307,61 @@
 </style>
 
 <div class="paper" id="top">
-  <div class="sheet">
+  <div class="split">
 
-    <!-- Header -->
-    <header class="row head">
-      <div class="c-tag cap tag">PORTFOLIO<br>2026</div>
-      <div class="c-title"><h1 class="title">최소혜</h1></div>
-    </header>
-    <div class="head__code cap">[GROWTH · CRM · 2020—2026]</div>
-    <hr class="rule">
-
-    <!-- Cover: resume-split hero -->
-    <div class="cover-grid">
-      <div class="cover-left">
-        <p class="cover-bio">서비스 성장 목표를 사용자 관점의 메시지와 경험으로 풀어내는 마케터입니다. 콘텐츠와 데이터를 기반으로 <b>유입부터 전환까지의 흐름</b>을 설계해 왔으며, 복잡한 과제를 구조화하고 실행 가능한 플랜으로 연결하는 데 강점을 가지고 있습니다.</p>
+    <!-- Fixed left rail: static identity + scroll-spy nav -->
+    <aside class="rail">
+      <div class="rail__top">
+        <div class="cap tag">PORTFOLIO<br>2026</div>
+        <h1 class="rail__name">최소혜</h1>
+        <p class="cap rail__role">[GROWTH · CRM · 2020—2026]</p>
+        <p class="rail__bio">서비스 성장 목표를 사용자 관점의 메시지와 경험으로 풀어내는 마케터입니다. 콘텐츠와 데이터를 기반으로 <b>유입부터 전환까지의 흐름</b>을 설계해 왔으며, 복잡한 과제를 구조화하고 실행 가능한 플랜으로 연결하는 데 강점을 가지고 있습니다.</p>
         <p class="cover-contact cap"><a href="mailto:ssohyeppyy@gmail.com">ssohyeppyy@gmail.com ↗</a></p>
       </div>
-      <div class="cover-right">
-        <div class="cover-block">
-          <span class="cap">Career</span>
-          <ul class="timeline-list">
-            <li><span class="cap">2025.08 — 재직중</span><b>Creator Product Marketing Manager</b> · 버킷플레이스(오늘의집)</li>
-            <li><span class="cap">2023.01 — 2025.07</span><b>Contents &amp; Community Manager</b> · 버킷플레이스(오늘의집)</li>
-            <li><span class="cap">2020.06 — 2022.12</span><b>Contents Editor &amp; Contents PM</b> · 띵스플로우(헬로우봇)</li>
-            <li><span class="cap">2018.10 — 2019.11</span><b>Editor</b> · 썸랩</li>
-          </ul>
-        </div>
-        <div class="cover-block">
-          <span class="cap">Focus Projects</span>
-          <ol class="proj-nav">
-            <li><a href="#p01">콜라보 마켓 크리에이터 사이드 Growth 기획</a></li>
-            <li><a href="#p02">콘텐츠 CRM 전략 기획 리딩/운영</a></li>
-            <li><a href="#p03">콘텐츠 노출/큐레이션 전략·프로세스 구축</a></li>
-            <li><a href="#p04">헬로우봇 오리지널 콘텐츠·프로모션 운영</a></li>
-          </ol>
-        </div>
-        <div class="cover-block">
-          <span class="cap">Skills &amp; Keywords</span>
-          <div class="skill-group">
-            <div class="skill-group__row"><span class="cap skill-group__label">Tools</span><p class="cover-skills">Braze(상) · SQL(중상) · Google Analytics(중) · Amplitude(중) · Figma(중)</p></div>
-            <div class="skill-group__row"><span class="cap skill-group__label">Keywords</span><p class="cover-skills">CRM · Funnel Optimization · Contents Strategy · Cross-team Collaboration</p></div>
-            <div class="skill-group__row"><span class="cap skill-group__label">Education</span><p class="cover-skills">서울시립대학교 도시사회학과(사회복지학과 복수전공) · 영어(비즈니스 커뮤니케이션) · 일본어(기초 회화)</p></div>
+      <div class="cover-block rail__nav">
+        <span class="cap">Focus Projects</span>
+        <ol class="proj-nav" id="railNav">
+          <li><a href="#p01" data-nav="p01">콜라보 마켓 크리에이터 사이드 Growth 기획</a></li>
+          <li><a href="#p02" data-nav="p02">콘텐츠 CRM 전략 기획 리딩/운영</a></li>
+          <li><a href="#p03" data-nav="p03">콘텐츠 노출/큐레이션 전략·프로세스 구축</a></li>
+          <li><a href="#p04" data-nav="p04">헬로우봇 오리지널 콘텐츠·프로모션 운영</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <!-- Scrolling right column: everything else -->
+    <main class="scroll">
+      <div class="scroll__inner">
+
+        <div class="row" style="margin-bottom:clamp(2rem,4vw,3rem);">
+          <div class="c-label"><span class="cap">Career</span></div>
+          <div class="c-content">
+            <ul class="timeline-list">
+              <li><span class="cap">2025.08 — 재직중</span><b>Creator Product Marketing Manager</b> · 버킷플레이스(오늘의집)</li>
+              <li><span class="cap">2023.01 — 2025.07</span><b>Contents &amp; Community Manager</b> · 버킷플레이스(오늘의집)</li>
+              <li><span class="cap">2020.06 — 2022.12</span><b>Contents Editor &amp; Contents PM</b> · 띵스플로우(헬로우봇)</li>
+              <li><span class="cap">2018.10 — 2019.11</span><b>Editor</b> · 썸랩</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
 
-    <hr class="rule">
+        <hr class="rule">
 
-    <!-- Chapter i — deck-style project layout (differentiated from chapters ii–iv) -->
-    <article class="chapter proj" id="p01">
+        <div class="row" style="margin: clamp(1.6rem,3vw,2.4rem) 0;">
+          <div class="c-label"><span class="cap">Skills &amp; Keywords</span></div>
+          <div class="c-content">
+            <div class="skill-group">
+              <div class="skill-group__row"><span class="cap skill-group__label">Tools</span><p class="cover-skills">Braze(상) · SQL(중상) · Google Analytics(중) · Amplitude(중) · Figma(중)</p></div>
+              <div class="skill-group__row"><span class="cap skill-group__label">Keywords</span><p class="cover-skills">CRM · Funnel Optimization · Contents Strategy · Cross-team Collaboration</p></div>
+              <div class="skill-group__row"><span class="cap skill-group__label">Education</span><p class="cover-skills">서울시립대학교 도시사회학과(사회복지학과 복수전공) · 영어(비즈니스 커뮤니케이션) · 일본어(기초 회화)</p></div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- Chapter i — deck-style project layout (differentiated from chapters ii–iv) -->
+        <article class="chapter proj" id="p01">
 
       <!-- Hero -->
       <header class="proj__hero">
@@ -600,6 +628,9 @@
         </div>
       </div>
     </footer>
+
+      </div>
+    </main>
 
   </div>
 </div>
